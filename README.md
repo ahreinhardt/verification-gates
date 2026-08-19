@@ -1,7 +1,7 @@
 # verification-gates
 
-**Deterministic verification for content you didn't write by hand.**
-Property sweeps, domain invariants, and snapshot baselines. Zero runtime dependencies.
+Small, deterministic tools for testing generated content: seeded property sweeps,
+domain invariants, and snapshot baselines. Zero runtime dependencies.
 
 ```bash
 git clone https://github.com/ahreinhardt/verification-gates && cd verification-gates
@@ -12,10 +12,9 @@ npm run verify        # tests + baseline + the worked example. No install step.
 
 ## The problem
 
-When content is generated — randomized per user, or authored by a language model,
-or both — there is no fixed answer key to diff against. The thing under test is
-not the output, it's the **generator**. And the failure modes are the ones that
-survive every tool you already have:
+Generated content may vary on every run, so one fixture cannot represent the
+possible output. The generator and its invariants become the test surface.
+Several common defects remain valid JavaScript and pass a one-sample unit test:
 
 | Failure | Types | Lint | Unit test on one sample |
 |---|:--:|:--:|:--:|
@@ -25,12 +24,9 @@ survive every tool you already have:
 | The answer displayed beside the question | ✗ | ✗ | ✗ |
 | A model quietly rewriting an answer that was already verified | ✗ | ✗ | ✗ |
 
-Every one of these ships happily. This library is the set of gates that stop them.
-
-It was extracted from [PhabPhysics](https://github.com/ahreinhardt/phabphysics), a
-live AP Physics platform where the content is LLM-authored and randomized per
-student, and a wrong answer is a production incident with a real teenager on the
-other end.
+The library is based on verification patterns used by
+[PhabPhysics](https://github.com/ahreinhardt/phabphysics), a live AP Physics
+platform with randomized problems and LLM-assisted curriculum authoring.
 
 ---
 
@@ -88,17 +84,18 @@ how often each bug surfaces (exhaustive, 2000 draws)
 all gates behaved as expected
 ```
 
-Note `reproduce: seed N`. Every draw gets its own seed, so any failure re-runs
-from one integer. **A failure you cannot re-run is a rumour, not a bug report** —
-that property has its own test in [`test/sweep.test.js`](test/sweep.test.js).
+Each draw has its own seed, so `reproduce: seed N` identifies a failing case with
+one integer. Seed reporting is tested in
+[`test/sweep.test.js`](test/sweep.test.js).
 
 ---
 
-## Three pillars
+## Core components
 
-### 1. Property sweeps — because one sample proves nothing
+### 1. Seeded property sweeps
 
-Assert what must hold for *every* draw, then take many draws.
+Define conditions that should hold for every draw, then sample the generator
+repeatedly.
 
 ```js
 import { sweep, noTemplateArtifacts, finiteNumbers, magnitudeBand } from './src/index.js';
@@ -112,15 +109,12 @@ const result = sweep({
 // → { ok, drawsTaken, truncated, failures: [{ seed, check, message }] }
 ```
 
-The demo measures how often each bug actually surfaces, and that is the argument
-for sweeping stated in numbers rather than asserted. The `projectileRange` defect
-appears in **50.7%** of draws — it hides behind a coin flip in the generator, so a
-developer eyeballing one sample output has even odds of seeing nothing wrong. The
-degrees/radians slip in `pendulumSpeed` fails every draw, but silently: the numbers
-stay finite and the prompt reads perfectly, so nothing short of an
-energy-conservation check notices.
+The demo also measures detection frequency. The `projectileRange` defect appears
+in **50.7%** of draws, so one manual sample has roughly even odds of missing it.
+The degrees/radians defect in `pendulumSpeed` appears on every draw but still
+produces finite numbers and readable text; the energy invariant detects it.
 
-### 2. Domain invariants — the layer no static check can reach
+### 2. Domain invariants
 
 Some things are only wrong if you know the domain.
 
@@ -131,14 +125,14 @@ const energyConservation = invariant('energyConservation', (d) =>
 );
 ```
 
-Return `true` to pass, or a **string explaining the violation** — because the
-message is what someone reads at 7am, and "invariant failed" doesn't help them.
+Return `true` to pass or a string that explains the violation. The string is
+included in the failure report.
 
 Built in and reusable: `noTemplateArtifacts`, `finiteNumbers`, `magnitudeBand`,
 `noAnswerLeak`. That last one comes from a real defect — a summary table rendered
 beside a question displayed the exact intermediate the student was asked to derive.
 
-### 3. Snapshot baselines — so a model can't quietly rewrite what was verified
+### 3. Snapshot baselines
 
 Pin the generated surface to a committed file. Drift fails the build. Re-approving
 is a **separate, deliberate command**:
@@ -148,38 +142,23 @@ node examples/physics/baseline.js            # check — fails on drift
 node examples/physics/baseline.js --update   # re-approve, and review the diff
 ```
 
-This is what makes it safe to let a fleet of agents rewrite a body of content.
-They can change anything they like; they cannot silently change something already
-verified without a human approving the diff.
+Generated samples are stored in a committed baseline. Any drift fails the check;
+updating the baseline is an explicit command whose diff can be reviewed.
 
-Baselines normalize float noise to 12 significant digits and sort keys, so they
-are byte-identical across OS and Node version — [CI proves that](.github/workflows/ci.yml)
-on a 3×3 matrix, because a baseline that fails on the last bit of a double is a
-baseline nobody trusts.
+Baselines normalize floating-point values to 12 significant digits and sort
+keys. The [CI matrix](.github/workflows/ci.yml) verifies identical output across
+three operating systems and three Node versions.
 
 ---
 
-## Where the human and the models fit
+## Limits and review
 
-These gates are deliberately dumb. They don't have opinions, they can't be
-argued with, and they run on every push. That's the floor.
-
-They also cannot see pedagogy, ambiguity, or a physically valid problem that is
-simply a bad question. In the system this came from, that layer is handled by
-**multi-model adversarial review** — the model that authors a thing never
-certifies it, verifiers are prompted to refute rather than review, and every
-claimed defect carries a written record of which refutation paths were tried and
-failed. That process is described in the
-[PhabPhysics case study](https://github.com/ahreinhardt/phabphysics#how-this-was-built-adversarial-multi-model-authoring).
-
-The division of labour is the actual design:
-
-> **Deterministic gates** catch what is *checkable*, on every push, without judgment.
-> **Adversarial review** catches what needs *judgment*, and is never trusted like a gate.
-> **A human** signs off on anything that touches correctness.
-
-Neither layer substitutes for the other. Verification that is itself probabilistic
-is not verification.
+These checks cover conditions that can be expressed deterministically. They do
+not judge pedagogy, ambiguity, or whether a physically valid prompt is useful.
+In PhabPhysics, a different model independently re-derives LLM-authored physics
+content, and a human approves changes that affect correctness. The process is
+described in the
+[PhabPhysics case study](https://github.com/ahreinhardt/phabphysics#llm-assisted-development).
 
 ---
 
@@ -199,15 +178,15 @@ is not verification.
 | `sample` / `compareBaseline` / `writeBaseline` | Snapshot baselines |
 | `walk(value)` | Every leaf with its path — build your own checks on this |
 
-**Requirements:** Node ≥ 20. No dependencies, runtime or dev — a verification tool
-that can break from a transitive update is not a gate.
+**Requirements:** Node ≥ 20. The package has no runtime or development
+dependencies.
 
 ## Repository
 
 ```
 src/         random.js · checks.js · sweep.js · snapshot.js · index.js
 examples/    physics/ — 4 generators (1 clean, 3 realistically broken) + demo + baseline
-test/        20 tests, node:test
+test/        27 tests, node:test
 ```
 
 Start with [`examples/physics/gates.js`](examples/physics/gates.js) — it's the
