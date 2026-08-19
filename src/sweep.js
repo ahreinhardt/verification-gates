@@ -68,7 +68,7 @@ export function formatReport({ results }) {
     }
     failed++;
     const count = r.truncated
-      ? `${r.failures.length}+ failing draws in the first ${r.drawsTaken} (stopped early)`
+      ? `${r.failures.length}+ failing draws in the first ${r.drawsTaken}, stopped early`
       : `${r.failures.length} of ${r.runs} draws`;
     out.push(`  FAIL  ${r.name}  (${count})`);
     for (const f of r.failures.slice(0, 3)) {

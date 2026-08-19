@@ -44,16 +44,48 @@ well-formatted, and entirely plausible to a human reading one sample.
 verification-gates — example sweep (200 draws per generator)
 
   ok    freeFall  (200 draws)
-  FAIL  pendulumSpeed  (10+ failing draws in the first 47, stopped early)
+  FAIL  pendulumSpeed  (10+ failing draws in the first 10, stopped early)
           [invariant:energyConservation] energy not conserved: mgh=0.2605 but ½mv²=31.5401
           reproduce: seed 1
-  FAIL  projectileRange  (10+ failing draws in the first 21, stopped early)
-          [noTemplateArtifacts] template artifact "undefined" at $.prompt:
-              "A ball leaves the ground at 30.07 m/s across undefined. Find its horizontal range."
+          [invariant:energyConservation] energy not conserved: mgh=1.9539 but ½mv²=6.8166
+          reproduce: seed 2
+          [invariant:energyConservation] energy not conserved: mgh=0.3493 but ½mv²=18.9279
+          reproduce: seed 3
+          … 7 more
+  FAIL  projectileRange  (10+ failing draws in the first 28, stopped early)
+          [noTemplateArtifacts] template artifact "undefined" at $.prompt: "A ball leaves the ground at 30.07 m/s across undefined. Find its horizontal range."
           reproduce: seed 5
+          [noTemplateArtifacts] template artifact "undefined" at $.prompt: "A ball leaves the ground at 13 m/s across undefined. Find its horizontal range."
+          reproduce: seed 8
+          [noTemplateArtifacts] template artifact "undefined" at $.prompt: "A ball leaves the ground at 14.36 m/s across undefined. Find its horizontal range."
+          reproduce: seed 9
+          … 7 more
   FAIL  collisionMomentum  (10+ failing draws in the first 10, stopped early)
           [noAnswerLeak] answer "1.06" leaks into $.table[2][2]: "1.06"
           reproduce: seed 1
+          [noAnswerLeak] answer "3.44" leaks into $.table[2][2]: "3.44"
+          reproduce: seed 2
+          [noAnswerLeak] answer "1.4" leaks into $.table[2][2]: "1.4"
+          reproduce: seed 3
+          … 7 more
+
+3 of 4 generators FAILED
+
+detection check — did each gate catch what it should?
+
+  ok    freeFall           expected clean                         got clean
+  ok    pendulumSpeed      expected invariant:energyConservation  got invariant:energyConservation
+  ok    projectileRange    expected noTemplateArtifacts           got noTemplateArtifacts
+  ok    collisionMomentum  expected noAnswerLeak                  got noAnswerLeak
+
+how often each bug surfaces (exhaustive, 2000 draws)
+
+  freeFall           clean
+  pendulumSpeed      100.0% of draws
+  projectileRange    50.7% of draws — one spot-check would likely miss it
+  collisionMomentum  98.8% of draws
+
+all gates behaved as expected
 ```
 
 Note `reproduce: seed N`. Every draw gets its own seed, so any failure re-runs
@@ -80,9 +112,13 @@ const result = sweep({
 // → { ok, drawsTaken, truncated, failures: [{ seed, check, message }] }
 ```
 
-The `pendulumSpeed` bug above is a degrees/radians slip that violates energy
-conservation on *most* draws but not all. A single spot-check had roughly even
-odds of shipping it.
+The demo measures how often each bug actually surfaces, and that is the argument
+for sweeping stated in numbers rather than asserted. The `projectileRange` defect
+appears in **50.7%** of draws — it hides behind a coin flip in the generator, so a
+developer eyeballing one sample output has even odds of seeing nothing wrong. The
+degrees/radians slip in `pendulumSpeed` fails every draw, but silently: the numbers
+stay finite and the prompt reads perfectly, so nothing short of an
+energy-conservation check notices.
 
 ### 2. Domain invariants — the layer no static check can reach
 

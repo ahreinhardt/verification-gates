@@ -5,7 +5,7 @@
 // each one is caught and that the correct generator passes clean — so CI stays
 // green while proving the gates actually detect, rather than merely running.
 
-import { sweepAll, formatReport } from '../../src/index.js';
+import { sweep, sweepAll, formatReport } from '../../src/index.js';
 import { specs } from './gates.js';
 
 const report = sweepAll(specs, { runs: 200, seed: 1 });
@@ -30,6 +30,18 @@ for (const [name, wanted] of Object.entries(expected)) {
   if (!ok) bad++;
   const detail = wanted === null ? 'expected clean' : `expected ${wanted}`;
   console.log(`  ${ok ? 'ok  ' : 'FAIL'}  ${name.padEnd(18)} ${detail.padEnd(38)} got ${got ?? 'clean'}`);
+}
+
+// How often does each bug actually surface? This is the argument for sweeping
+// rather than spot-checking, stated in numbers instead of asserted.
+console.log('\nhow often each bug surfaces (exhaustive, 2000 draws)\n');
+for (const s of specs) {
+  const full = sweep({ ...s, runs: 2000, seed: 1, maxFailures: Infinity });
+  const pct = (100 * full.failures.length / full.runs).toFixed(1);
+  const note = full.failures.length === 0 ? 'clean'
+    : Number(pct) < 75 ? `${pct}% of draws — one spot-check would likely miss it`
+    : `${pct}% of draws`;
+  console.log(`  ${s.name.padEnd(18)} ${note}`);
 }
 
 console.log(
