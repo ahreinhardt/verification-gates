@@ -1,8 +1,7 @@
 // Reusable assertions applied to every draw of a sweep.
 //
-// A check receives the generated value and throws on failure. The message it
-// throws is what a developer reads at 7am, so it states the offending path and
-// the offending value, not just that something was wrong.
+// A check receives the generated value and throws on failure. Failure messages
+// include the offending path and value.
 
 /** Define a check. `assert` throws on failure. */
 export function check(name, assert) {
@@ -25,9 +24,8 @@ export function* walk(value, path = '$') {
 const ARTIFACT = /\b(undefined|NaN|Infinity|null)\b|\[object Object\]|\{\{|\}\}/;
 
 /**
- * No template artifacts in any string. This is the single highest-yield check on
- * generated text: `undefined`, `NaN` and `[object Object]` are what a broken
- * interpolation looks like once it has already reached a user.
+ * No template artifacts in any string. Broken interpolation commonly appears as
+ * `undefined`, `NaN`, or `[object Object]` in user-facing text.
  */
 export function noTemplateArtifacts({ only } = {}) {
   return check('noTemplateArtifacts', (draw) => {
@@ -53,8 +51,7 @@ export function finiteNumbers({ only } = {}) {
 
 /**
  * Numbers land in a plausible magnitude band. Catches unit errors and runaway
- * arithmetic that are finite, well-formatted, and absurd — a 4.2e17 m/s velocity
- * passes every type check ever written.
+ * arithmetic that remain finite and pass type checks.
  */
 export function magnitudeBand({ min = 1e-6, max = 1e9, only, allowZero = true } = {}) {
   return check('magnitudeBand', (draw) => {

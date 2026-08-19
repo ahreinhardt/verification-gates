@@ -4,9 +4,8 @@
 //   node examples/physics/baseline.js            # check — fails on drift
 //   node examples/physics/baseline.js --update   # re-approve, deliberately
 //
-// The two modes being separate commands is the whole point. Content can be
-// regenerated freely; changing what was already verified requires a human to
-// run the second command and review the diff.
+// Checking and updating are separate commands so baseline changes are explicit
+// and reviewable.
 
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';

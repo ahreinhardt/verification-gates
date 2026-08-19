@@ -1,6 +1,4 @@
-// Wiring the gates to the generators. This file is the thing worth copying: it
-// is what "define the properties, then take a lot of draws" looks like in
-// practice.
+// Apply reusable structural checks and one domain invariant to the examples.
 
 import {
   noTemplateArtifacts, finiteNumbers, magnitudeBand, noAnswerLeak, invariant, closeTo,
@@ -23,7 +21,7 @@ export const universalChecks = [
   }),
 ];
 
-/** Domain assertions — the layer no static check can reach. */
+/** Domain assertion for examples that expose energy values. */
 export const energyConservation = invariant('energyConservation', (d) => {
   if (!d.energy) return true;
   const { potential, kinetic } = d.energy;

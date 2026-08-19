@@ -1,8 +1,4 @@
-// The property harness.
-//
-// The premise: when content is generated, there is no fixed answer key to diff
-// against. The surface under test is the *generator*, so you assert properties
-// that must hold for every draw and then take a lot of draws.
+// Run generated values through repeatable checks over many seeded draws.
 
 import { rngFor } from './random.js';
 
@@ -44,9 +40,7 @@ export function sweep({ name, generate, checks = [], runs = 100, seed = 1, maxFa
     if (failures.length >= maxFailures) break;
   }
 
-  // `truncated` matters: stopping at maxFailures means the failure count is a
-  // floor, not a total. Reporting "10 of 200" when you stopped looking at 10
-  // understates the blast radius.
+  // When collection stops at maxFailures, the reported count is a lower bound.
   const truncated = failures.length >= maxFailures && drawsTaken < runs;
   return { name, runs, drawsTaken, truncated, ok: failures.length === 0, failures };
 }

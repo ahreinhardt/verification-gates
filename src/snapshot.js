@@ -1,10 +1,7 @@
 // Snapshot baselines.
 //
 // Pin the output of a generator set to a committed file. Drift fails the build;
-// changing the baseline is an explicit, reviewed act rather than a side effect.
-// This is what makes it safe to let a model rewrite a body of content: it can
-// change anything it likes, but it cannot quietly change something already
-// verified without that showing up as a diff a human has to approve.
+// changing the baseline is an explicit command that produces a reviewable diff.
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';

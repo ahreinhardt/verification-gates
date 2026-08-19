@@ -1,6 +1,5 @@
-// Seeded PRNG. Every draw in a sweep gets its own seed so that any failure is
-// reproducible from the seed alone — the single most important property of a
-// randomized harness. A failure you cannot re-run is a rumour, not a bug report.
+// Seeded PRNG. Every draw in a sweep gets its own seed, so a reported failure
+// can be reproduced from that seed alone.
 
 function mulberry32(a) {
   return function () {

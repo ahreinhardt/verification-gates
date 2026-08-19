@@ -1,9 +1,5 @@
-// Four problem generators. One is correct. Three carry bugs taken from real
-// defect classes seen in production — each one produces output that is finite,
-// well-formatted, and completely plausible on inspection.
-//
-// That is the whole point: none of these are caught by types, linting, or a
-// developer reading one sample output.
+// Four problem generators. One is correct. Three reproduce defect classes seen
+// in production while still returning finite, well-formatted output.
 
 const G = 9.8;
 const round = (x, n = 2) => Number(x.toFixed(n));
@@ -27,8 +23,7 @@ export function freeFall(rng) {
  * The stated rise height uses a correct conversion; the answer re-derives the
  * same quantity inline and forgets it. Two implementations of one formula
  * drifted apart. Numbers stay finite and the prompt reads perfectly, so only an
- * energy-conservation check sees it — and not on every draw, which is exactly
- * why one spot-check would have shipped this.
+ * energy-conservation check detects it.
  */
 export function pendulumSpeed(rng) {
   const L = round(rng.float(0.5, 2.5));
@@ -70,8 +65,8 @@ export function projectileRange(rng) {
  * BUG — the answer leaks into the prompt.
  *
  * A summary table rendered beside the question displays the very quantity the
- * student is being asked to compute. No physics error; the problem is simply
- * no longer a problem.
+ * student is being asked to compute. The physics is valid, but the prompt no
+ * longer tests the intended calculation.
  */
 export function collisionMomentum(rng) {
   const m1 = round(rng.float(1, 6), 1);

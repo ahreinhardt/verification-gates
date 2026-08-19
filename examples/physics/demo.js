@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 // Runs the gates against the example generators and prints the report.
 //
-// Three of the four generators are deliberately broken. This script asserts that
-// each one is caught and that the correct generator passes clean — so CI stays
-// green while proving the gates actually detect, rather than merely running.
+// Three generators are deliberately broken. The demo asserts that each expected
+// check fires and that the clean generator passes.
 
 import { sweep, sweepAll, formatReport } from '../../src/index.js';
 import { specs } from './gates.js';
@@ -32,8 +31,7 @@ for (const [name, wanted] of Object.entries(expected)) {
   console.log(`  ${ok ? 'ok  ' : 'FAIL'}  ${name.padEnd(18)} ${detail.padEnd(38)} got ${got ?? 'clean'}`);
 }
 
-// How often does each bug actually surface? This is the argument for sweeping
-// rather than spot-checking, stated in numbers instead of asserted.
+// Measure how often each defect appears across a larger sample.
 console.log('\nhow often each bug surfaces (exhaustive, 2000 draws)\n');
 for (const s of specs) {
   const full = sweep({ ...s, runs: 2000, seed: 1, maxFailures: Infinity });

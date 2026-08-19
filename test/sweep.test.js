@@ -11,8 +11,7 @@ test('a clean generator passes every draw', () => {
   assert.equal(r.drawsTaken, 50);
 });
 
-test('THE property that matters: a reported seed reproduces its failure', () => {
-  // A failure you cannot re-run is useless. This asserts the harness keeps that promise.
+test('a reported seed reproduces its failure', () => {
   const generate = (rng) => ({ v: rng.float(0, 1) > 0.8 ? Number.NaN : 1 });
   const r = sweep({ name: 'flaky', generate, checks: [finiteNumbers()], runs: 200 });
   assert.ok(r.failures.length > 0, 'expected at least one failure to test against');
