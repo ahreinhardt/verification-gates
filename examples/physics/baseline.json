@@ -1,0 +1,800 @@
+{
+  "freeFall": {
+    "draws": [
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 23.75
+        },
+        "energy": {
+          "kinetic": 282.044,
+          "potential": 282.044
+        },
+        "given": {
+          "g": 9.8,
+          "height": 28.78
+        },
+        "id": "freeFall",
+        "prompt": "An object is released from rest at a height of 28.78 m. What is its speed just before it hits the ground?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 25.6
+        },
+        "energy": {
+          "kinetic": 327.712,
+          "potential": 327.712
+        },
+        "given": {
+          "g": 9.8,
+          "height": 33.44
+        },
+        "id": "freeFall",
+        "prompt": "An object is released from rest at a height of 33.44 m. What is its speed just before it hits the ground?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 25.37
+        },
+        "energy": {
+          "kinetic": 321.734,
+          "potential": 321.734
+        },
+        "given": {
+          "g": 9.8,
+          "height": 32.83
+        },
+        "id": "freeFall",
+        "prompt": "An object is released from rest at a height of 32.83 m. What is its speed just before it hits the ground?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 28.58
+        },
+        "energy": {
+          "kinetic": 408.464,
+          "potential": 408.464
+        },
+        "given": {
+          "g": 9.8,
+          "height": 41.68
+        },
+        "id": "freeFall",
+        "prompt": "An object is released from rest at a height of 41.68 m. What is its speed just before it hits the ground?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 24.85
+        },
+        "energy": {
+          "kinetic": 308.798,
+          "potential": 308.798
+        },
+        "given": {
+          "g": 9.8,
+          "height": 31.51
+        },
+        "id": "freeFall",
+        "prompt": "An object is released from rest at a height of 31.51 m. What is its speed just before it hits the ground?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 21.86
+        },
+        "energy": {
+          "kinetic": 238.826,
+          "potential": 238.826
+        },
+        "given": {
+          "g": 9.8,
+          "height": 24.37
+        },
+        "id": "freeFall",
+        "prompt": "An object is released from rest at a height of 24.37 m. What is its speed just before it hits the ground?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 6.28
+        },
+        "energy": {
+          "kinetic": 19.698,
+          "potential": 19.698
+        },
+        "given": {
+          "g": 9.8,
+          "height": 2.01
+        },
+        "id": "freeFall",
+        "prompt": "An object is released from rest at a height of 2.01 m. What is its speed just before it hits the ground?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 12.75
+        },
+        "energy": {
+          "kinetic": 81.34,
+          "potential": 81.34
+        },
+        "given": {
+          "g": 9.8,
+          "height": 8.3
+        },
+        "id": "freeFall",
+        "prompt": "An object is released from rest at a height of 8.3 m. What is its speed just before it hits the ground?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 14.1
+        },
+        "energy": {
+          "kinetic": 99.372,
+          "potential": 99.372
+        },
+        "given": {
+          "g": 9.8,
+          "height": 10.14
+        },
+        "id": "freeFall",
+        "prompt": "An object is released from rest at a height of 10.14 m. What is its speed just before it hits the ground?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 21.39
+        },
+        "energy": {
+          "kinetic": 228.732,
+          "potential": 228.732
+        },
+        "given": {
+          "g": 9.8,
+          "height": 23.34
+        },
+        "id": "freeFall",
+        "prompt": "An object is released from rest at a height of 23.34 m. What is its speed just before it hits the ground?"
+      }
+    ],
+    "name": "freeFall",
+    "runs": 10,
+    "seed": 1
+  },
+  "pendulumSpeed": {
+    "draws": [
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 7.94
+        },
+        "energy": {
+          "kinetic": 31.5400767237,
+          "potential": 0.260547035841
+        },
+        "given": {
+          "angleDeg": 10,
+          "g": 9.8,
+          "length": 1.75,
+          "riseHeight": 0.0266
+        },
+        "id": "pendulumSpeed",
+        "prompt": "A pendulum bob on a 1.75 m string is released from rest at 10° from vertical. How fast is it moving at the lowest point?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 3.69
+        },
+        "energy": {
+          "kinetic": 6.81657556312,
+          "potential": 1.95388214215
+        },
+        "given": {
+          "angleDeg": 26,
+          "g": 9.8,
+          "length": 1.97,
+          "riseHeight": 0.1994
+        },
+        "id": "pendulumSpeed",
+        "prompt": "A pendulum bob on a 1.97 m string is released from rest at 26° from vertical. How fast is it moving at the lowest point?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 6.15
+        },
+        "energy": {
+          "kinetic": 18.9278586299,
+          "potential": 0.349303988293
+        },
+        "given": {
+          "angleDeg": 11,
+          "g": 9.8,
+          "length": 1.94,
+          "riseHeight": 0.0356
+        },
+        "id": "pendulumSpeed",
+        "prompt": "A pendulum bob on a 1.94 m string is released from rest at 11° from vertical. How fast is it moving at the lowest point?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 4.03
+        },
+        "energy": {
+          "kinetic": 8.13144800677,
+          "potential": 2.33077311373
+        },
+        "given": {
+          "angleDeg": 26,
+          "g": 9.8,
+          "length": 2.35,
+          "riseHeight": 0.2378
+        },
+        "id": "pendulumSpeed",
+        "prompt": "A pendulum bob on a 2.35 m string is released from rest at 26° from vertical. How fast is it moving at the lowest point?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 5.08
+        },
+        "energy": {
+          "kinetic": 12.8858829741,
+          "potential": 6.33676844988
+        },
+        "given": {
+          "angleDeg": 49,
+          "g": 9.8,
+          "length": 1.88,
+          "riseHeight": 0.6466
+        },
+        "id": "pendulumSpeed",
+        "prompt": "A pendulum bob on a 1.88 m string is released from rest at 49° from vertical. How fast is it moving at the lowest point?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 7.47
+        },
+        "energy": {
+          "kinetic": 27.9354965267,
+          "potential": 0.230770231745
+        },
+        "given": {
+          "angleDeg": 10,
+          "g": 9.8,
+          "length": 1.55,
+          "riseHeight": 0.0235
+        },
+        "id": "pendulumSpeed",
+        "prompt": "A pendulum bob on a 1.55 m string is released from rest at 10° from vertical. How fast is it moving at the lowest point?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 0.97
+        },
+        "energy": {
+          "kinetic": 0.47165120173,
+          "potential": 0.130610149854
+        },
+        "given": {
+          "angleDeg": 13,
+          "g": 9.8,
+          "length": 0.52,
+          "riseHeight": 0.0133
+        },
+        "id": "pendulumSpeed",
+        "prompt": "A pendulum bob on a 0.52 m string is released from rest at 13° from vertical. How fast is it moving at the lowest point?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 5.62
+        },
+        "energy": {
+          "kinetic": 15.775499185,
+          "potential": 1.94711535219
+        },
+        "given": {
+          "angleDeg": 41,
+          "g": 9.8,
+          "length": 0.81,
+          "riseHeight": 0.1987
+        },
+        "id": "pendulumSpeed",
+        "prompt": "A pendulum bob on a 0.81 m string is released from rest at 41° from vertical. How fast is it moving at the lowest point?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 5.82
+        },
+        "energy": {
+          "kinetic": 16.9192541744,
+          "potential": 3.5119914958
+        },
+        "given": {
+          "angleDeg": 53,
+          "g": 9.8,
+          "length": 0.9,
+          "riseHeight": 0.3584
+        },
+        "id": "pendulumSpeed",
+        "prompt": "A pendulum bob on a 0.9 m string is released from rest at 53° from vertical. How fast is it moving at the lowest point?"
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 2.08
+        },
+        "energy": {
+          "kinetic": 2.15766441648,
+          "potential": 6.47986431898
+        },
+        "given": {
+          "angleDeg": 56,
+          "g": 9.8,
+          "length": 1.5,
+          "riseHeight": 0.6612
+        },
+        "id": "pendulumSpeed",
+        "prompt": "A pendulum bob on a 1.5 m string is released from rest at 56° from vertical. How fast is it moving at the lowest point?"
+      }
+    ],
+    "name": "pendulumSpeed",
+    "runs": 10,
+    "seed": 1
+  },
+  "projectileRange": {
+    "draws": [
+      {
+        "answer": {
+          "unit": "m",
+          "value": 80.2
+        },
+        "given": {
+          "angleDeg": 47,
+          "g": 9.8,
+          "speed": 28.07
+        },
+        "id": "projectileRange",
+        "prompt": "A ball leaves the ground at 28.07 m/s across a flat roof. Find its horizontal range."
+      },
+      {
+        "answer": {
+          "unit": "m",
+          "value": 91
+        },
+        "given": {
+          "angleDeg": 32,
+          "g": 9.8,
+          "speed": 31.5
+        },
+        "id": "projectileRange",
+        "prompt": "A ball leaves the ground at 31.5 m/s across packed sand. Find its horizontal range."
+      },
+      {
+        "answer": {
+          "unit": "m",
+          "value": 97.84
+        },
+        "given": {
+          "angleDeg": 42,
+          "g": 9.8,
+          "speed": 31.05
+        },
+        "id": "projectileRange",
+        "prompt": "A ball leaves the ground at 31.05 m/s across level grass. Find its horizontal range."
+      },
+      {
+        "answer": {
+          "unit": "m",
+          "value": 119.34
+        },
+        "given": {
+          "angleDeg": 28,
+          "g": 9.8,
+          "speed": 37.56
+        },
+        "id": "projectileRange",
+        "prompt": "A ball leaves the ground at 37.56 m/s across level grass. Find its horizontal range."
+      },
+      {
+        "answer": {
+          "unit": "m",
+          "value": 0
+        },
+        "given": {
+          "angleDeg": 0,
+          "g": 9.8,
+          "speed": 30.07
+        },
+        "id": "projectileRange",
+        "prompt": "A ball leaves the ground at 30.07 m/s across undefined. Find its horizontal range."
+      },
+      {
+        "answer": {
+          "unit": "m",
+          "value": 59.07
+        },
+        "given": {
+          "angleDeg": 55,
+          "g": 9.8,
+          "speed": 24.82
+        },
+        "id": "projectileRange",
+        "prompt": "A ball leaves the ground at 24.82 m/s across level grass. Find its horizontal range."
+      },
+      {
+        "answer": {
+          "unit": "m",
+          "value": 3.79
+        },
+        "given": {
+          "angleDeg": 74,
+          "g": 9.8,
+          "speed": 8.37
+        },
+        "id": "projectileRange",
+        "prompt": "A ball leaves the ground at 8.37 m/s across a flat roof. Find its horizontal range."
+      },
+      {
+        "answer": {
+          "unit": "m",
+          "value": 0
+        },
+        "given": {
+          "angleDeg": 0,
+          "g": 9.8,
+          "speed": 13
+        },
+        "id": "projectileRange",
+        "prompt": "A ball leaves the ground at 13 m/s across undefined. Find its horizontal range."
+      },
+      {
+        "answer": {
+          "unit": "m",
+          "value": 0
+        },
+        "given": {
+          "angleDeg": 0,
+          "g": 9.8,
+          "speed": 14.36
+        },
+        "id": "projectileRange",
+        "prompt": "A ball leaves the ground at 14.36 m/s across undefined. Find its horizontal range."
+      },
+      {
+        "answer": {
+          "unit": "m",
+          "value": 0
+        },
+        "given": {
+          "angleDeg": 0,
+          "g": 9.8,
+          "speed": 24.06
+        },
+        "id": "projectileRange",
+        "prompt": "A ball leaves the ground at 24.06 m/s across undefined. Find its horizontal range."
+      }
+    ],
+    "name": "projectileRange",
+    "runs": 10,
+    "seed": 1
+  },
+  "collisionMomentum": {
+    "draws": [
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 1.06
+        },
+        "given": {
+          "m1": 4.1,
+          "m2": 3.6,
+          "v1": 2
+        },
+        "id": "collisionMomentum",
+        "prompt": "A 4.1 kg cart moving at 2 m/s strikes a stationary 3.6 kg cart and they couple together. Find their common final speed.",
+        "table": [
+          [
+            "quantity",
+            "before",
+            "after"
+          ],
+          [
+            "total momentum (kg·m/s)",
+            "8.2",
+            "8.2"
+          ],
+          [
+            "common speed (m/s)",
+            "—",
+            "1.06"
+          ]
+        ]
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 3.44
+        },
+        "given": {
+          "m1": 4.7,
+          "m2": 2.4,
+          "v1": 5.2
+        },
+        "id": "collisionMomentum",
+        "prompt": "A 4.7 kg cart moving at 5.2 m/s strikes a stationary 2.4 kg cart and they couple together. Find their common final speed.",
+        "table": [
+          [
+            "quantity",
+            "before",
+            "after"
+          ],
+          [
+            "total momentum (kg·m/s)",
+            "24.44",
+            "24.44"
+          ],
+          [
+            "common speed (m/s)",
+            "—",
+            "3.44"
+          ]
+        ]
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 1.4
+        },
+        "given": {
+          "m1": 4.6,
+          "m2": 3.3,
+          "v1": 2.4
+        },
+        "id": "collisionMomentum",
+        "prompt": "A 4.6 kg cart moving at 2.4 m/s strikes a stationary 3.3 kg cart and they couple together. Find their common final speed.",
+        "table": [
+          [
+            "quantity",
+            "before",
+            "after"
+          ],
+          [
+            "total momentum (kg·m/s)",
+            "11.04",
+            "11.04"
+          ],
+          [
+            "common speed (m/s)",
+            "—",
+            "1.4"
+          ]
+        ]
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 3.85
+        },
+        "given": {
+          "m1": 5.6,
+          "m2": 2.1,
+          "v1": 5.3
+        },
+        "id": "collisionMomentum",
+        "prompt": "A 5.6 kg cart moving at 5.3 m/s strikes a stationary 2.1 kg cart and they couple together. Find their common final speed.",
+        "table": [
+          [
+            "quantity",
+            "before",
+            "after"
+          ],
+          [
+            "total momentum (kg·m/s)",
+            "29.68",
+            "29.68"
+          ],
+          [
+            "common speed (m/s)",
+            "—",
+            "3.85"
+          ]
+        ]
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 6.57
+        },
+        "given": {
+          "m1": 4.4,
+          "m2": 2.1,
+          "v1": 9.7
+        },
+        "id": "collisionMomentum",
+        "prompt": "A 4.4 kg cart moving at 9.7 m/s strikes a stationary 2.1 kg cart and they couple together. Find their common final speed.",
+        "table": [
+          [
+            "quantity",
+            "before",
+            "after"
+          ],
+          [
+            "total momentum (kg·m/s)",
+            "42.68",
+            "42.68"
+          ],
+          [
+            "common speed (m/s)",
+            "—",
+            "6.57"
+          ]
+        ]
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 0.91
+        },
+        "given": {
+          "m1": 3.6,
+          "m2": 4.3,
+          "v1": 2
+        },
+        "id": "collisionMomentum",
+        "prompt": "A 3.6 kg cart moving at 2 m/s strikes a stationary 4.3 kg cart and they couple together. Find their common final speed.",
+        "table": [
+          [
+            "quantity",
+            "before",
+            "after"
+          ],
+          [
+            "total momentum (kg·m/s)",
+            "7.2",
+            "7.2"
+          ],
+          [
+            "common speed (m/s)",
+            "—",
+            "0.91"
+          ]
+        ]
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 0.41
+        },
+        "given": {
+          "m1": 1.1,
+          "m2": 5.9,
+          "v1": 2.6
+        },
+        "id": "collisionMomentum",
+        "prompt": "A 1.1 kg cart moving at 2.6 m/s strikes a stationary 5.9 kg cart and they couple together. Find their common final speed.",
+        "table": [
+          [
+            "quantity",
+            "before",
+            "after"
+          ],
+          [
+            "total momentum (kg·m/s)",
+            "2.86",
+            "2.86"
+          ],
+          [
+            "common speed (m/s)",
+            "—",
+            "0.41"
+          ]
+        ]
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 3.47
+        },
+        "given": {
+          "m1": 1.8,
+          "m2": 2.5,
+          "v1": 8.3
+        },
+        "id": "collisionMomentum",
+        "prompt": "A 1.8 kg cart moving at 8.3 m/s strikes a stationary 2.5 kg cart and they couple together. Find their common final speed.",
+        "table": [
+          [
+            "quantity",
+            "before",
+            "after"
+          ],
+          [
+            "total momentum (kg·m/s)",
+            "14.94",
+            "14.94"
+          ],
+          [
+            "common speed (m/s)",
+            "—",
+            "3.47"
+          ]
+        ]
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 5.68
+        },
+        "given": {
+          "m1": 2,
+          "m2": 1.7,
+          "v1": 10.5
+        },
+        "id": "collisionMomentum",
+        "prompt": "A 2 kg cart moving at 10.5 m/s strikes a stationary 1.7 kg cart and they couple together. Find their common final speed.",
+        "table": [
+          [
+            "quantity",
+            "before",
+            "after"
+          ],
+          [
+            "total momentum (kg·m/s)",
+            "21",
+            "21"
+          ],
+          [
+            "common speed (m/s)",
+            "—",
+            "5.68"
+          ]
+        ]
+      },
+      {
+        "answer": {
+          "unit": "m/s",
+          "value": 4.9
+        },
+        "given": {
+          "m1": 3.5,
+          "m2": 4.5,
+          "v1": 11.2
+        },
+        "id": "collisionMomentum",
+        "prompt": "A 3.5 kg cart moving at 11.2 m/s strikes a stationary 4.5 kg cart and they couple together. Find their common final speed.",
+        "table": [
+          [
+            "quantity",
+            "before",
+            "after"
+          ],
+          [
+            "total momentum (kg·m/s)",
+            "39.2",
+            "39.2"
+          ],
+          [
+            "common speed (m/s)",
+            "—",
+            "4.9"
+          ]
+        ]
+      }
+    ],
+    "name": "collisionMomentum",
+    "runs": 10,
+    "seed": 1
+  }
+}

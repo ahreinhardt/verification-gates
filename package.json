@@ -1,0 +1,27 @@
+{
+  "name": "verification-gates",
+  "version": "0.1.0",
+  "description": "Deterministic verification gates for generated content \u2014 property sweeps, domain invariants, and snapshot baselines with zero runtime dependencies.",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "demo": "node examples/physics/demo.js",
+    "baseline": "node examples/physics/baseline.js",
+    "baseline:update": "node examples/physics/baseline.js --update",
+    "verify": "npm test && npm run baseline && npm run demo"
+  },
+  "keywords": [
+    "property-testing",
+    "invariants",
+    "snapshot",
+    "llm",
+    "generated-content",
+    "verification"
+  ],
+  "license": "MIT",
+  "author": "Alex Reinhardt"
+}
